@@ -1,0 +1,58 @@
+//Pushing 3 values in stack
+Input 				// Enter X value
+Store X				// Store the value
+Input				// Enter Z value
+Store Y				// Store the value
+Input 				// Enter Z value
+Store Z				// Store the value
+
+PushX,   LoadI Stackpointer      //Loading the value from stackpointer by indirect addressing
+         Load X                  // Loading the value 5
+         AddI Stackpointer       //Adding the value stored in Stackpointer with X by indirect addressing          
+         StoreI Stackpointer     //Storing the value by indirect addressing 
+         Load One                //Loading a constant value 1
+         Add Stackpointer        //Adding the Stackpointer value with 1
+         Store Stackpointer      //Storing the value
+PushY,   LoadI Stackpointer      //Loading the value from stackpointer by indirect addressing
+         Load Y                  // Loading the value 7
+         AddI Stackpointer       //Adding the value stored in Stackpointer with X by indirect addressing 
+         StoreI Stackpointer     //Storing the value by indirect addressing
+         Load One                //Loading a constant value 1
+         Add Stackpointer        //Adding the Stackpointer value with 1
+         Store Stackpointer      //Storing the value
+PushZ,   LoadI Stackpointer      //Loading the value from stackpointer by indirect addressing
+         Load Z                  // Loading the value 3 
+         AddI Stackpointer       //Adding the value stored in Stackpointer with X by indirect addressing
+         StoreI Stackpointer     //Storing the value by indirect addressing
+         Load One                //Loading a constant value 1
+         Add Stackpointer        //Adding the Stackpointer value with 1
+         Store Stackpointer      //Storing the value
+/Popping the values from stack 
+
+PopX,    Load Stackpointer       //Load the value in stackpointer
+         Subt One                //Reducing one from that value
+         Store Stackpointer      //Storing the new value in stackpointer
+         LoadI Stackpointer      //Loading the new value from the stack by indirect addressing
+         Output                  //Displaying the value of X
+         Load Stackpointer       //Loading the value from the stack
+         Subt One                //Reducing the value again
+         Store Stackpointer      //Storing the new value
+
+PopY,    LoadI Stackpointer      //Load the value in stackpointer by indirect addressing
+         Output                  //Displaying the value of Y
+         Load Stackpointer       //Loading the value from the stack
+         Subt One                //Reducing the value again
+         Store Stackpointer      //Storing the new value
+
+PopZ,    LoadI Stackpointer      //Load the value in stackpointer by indirect addressing
+         Output                  //Displaying the value of Z
+         Load Stackpointer       //Loading the value from the stack
+         Subt One                //Reducing the value again
+         Store Stackpointer      //Storing the new value
+         Halt                    //Stopping the process
+ 
+Stackpointer,  HEX A00           //Stackpointer Address
+X,             Dec 0             //Constant value of X
+Y,             Dec 0             //Constant value of Y
+Z,             Dec 0             //Constant value of Z
+One,           Dec 1             //Value of One

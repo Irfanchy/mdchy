@@ -1,0 +1,21 @@
+Divide, Hex 000               //entry point
+        Clear                 //setting AC to 0
+        Store DivQt           //Make DivDvdnd 0
+Div1,   Load DivDvdnd         //Loading the value of Dividend
+        Subt DivDvsr          //Subtracting the divisor from quotient
+        Store DivDvdnd        //Storing the new value
+        Load DivQt	      // Load the value from DivQt
+        Add One		      //incremet with one for the looping
+        Store DivQt
+        Load DivDvdnd 
+        Skipcond 400          //Skip if its 0
+	Jump Div1             //Jump to Div1  
+	Jump Div2	      //Jump to Div2  
+Div2,   Load DivQt	      //Load value of DivQt
+        Store DivQt
+Output  DivQt		      // Show the result in output 
+        Halt                  //Stop
+DivQt,      Dec 0             //initial Quotient value
+DivDvsr,    Dec 8             //Divisor
+DivDvdnd,   Dec 80            //Dividend 
+One,        Dec 1             //Constant value 1

@@ -1,0 +1,54 @@
+Start,    Input                //Asking for user input
+          SkipCond 800         //If value is greater than 0 skip the next instruction
+          Jump Pop             //Jump to pop value
+          StoreI Stackpointer   //Store the value in stack indirectly
+          JnS Incr             //Jump to increment
+          Jump Start           //Repeat for other inputs
+
+//Pop Subroutine
+
+Pop,      JnS Decr             //Jump to decrement
+          LoadI Stackpointer    //Load Value from stackpointer indirectly 
+          Store X             //Store the first value
+          Jns Decr             //Jump to decrement again for second value
+          LoadI Stackpointer    //Load Value from stackpointer indirectly 
+          Store Y              //Store the value in Y
+          Jump Add              //Jump to add the values
+
+//Addition Subroutine
+
+Add,      Load X              //Load the value at X
+          Add Y               //Add X with Y
+          Store Result          //Store as Result   
+          Load Result           //The the value in Result
+          Output               //output the value
+          Jump Push            //Jump to push the Result
+
+//Push Subroutine
+
+Push,     Load Result           //Load the Result value
+          StoreI Stackpointer  //Store the value
+          Jns Incr             //Jump to increment
+          Jump Start           //Jump back to start of program
+
+//Increment Subroutine
+          
+Incr,     Hex 000              //Increment address
+          Load Stackpointer    //Load the value at stack
+          Add One              //Add one with the stack value
+          Store Stackpointer   //Store it back to stack 
+          JumpI Incr           //Jump back to push
+
+//Decrement subroutine
+
+Decr,     Hex 000              //Decrement address
+          Load Stackpointer    //Load Stack
+          Subt One             //Reduce one
+          Store Stackpointer   //Store the value in stack 
+          JumpI Decr           //Jump back to pop
+
+Stackpointer,    HEX A00    //Stack Address
+One,              Dec 1         //Constant Value 1
+X,               Dec 0         //Variable 1
+Y,               Dec 0         //Variable 2
+Result,            Dec 0         //Sum of X and Y

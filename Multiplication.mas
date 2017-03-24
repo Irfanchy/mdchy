@@ -1,0 +1,31 @@
+INPUT 		/Take first input
+Store A 	/Store A in first parameter
+INPUT   	/Take second input
+Store B 	/Store B in second parameter
+Skipcond 400	/Skip if input is 0 
+JnS Mul 	/Jump to multiplication subroutine
+Load Sum 	/Get result
+Store  C 	/C = A x B
+Output C 	/Show the final result in output
+Halt 		/Terminate program
+A, Dec 0 	/Initial value of A
+B, Dec 0 	/ Initial value of B
+Ctr, Dec 0 	/Counter for looping
+One, Dec 1 	/Constant with value 1
+C, Dec 0 	/Temp storage
+Sum, Dec 0 	/Initial sum
+Mul, Hex 0 	/Store return address here
+Load B 		/Load second parameter to be used as counter
+Store Ctr 	/Store as counter
+Clear 		/Clear sum
+Store Sum 	/Zero out the sum to begin
+Loop, Load Sum 	/Load the sum
+Add A 		/Add first parameter
+Store  Sum 	/Store result in Sum
+Load  Ctr 	/Load the counter value
+Subt One 	/Decrement counter by one
+Store Ctr 	/Store counter
+SkipCond  400 	/If counter = 0 finish subroutine
+Jump Loop 	/Continue subroutine loop
+JumpI Mul 	/Done with subroutine, return to main
+END 		/Finish
